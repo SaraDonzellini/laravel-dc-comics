@@ -23,10 +23,14 @@
             {{$comic->series}}
           </h4>
         </div>
+        <div class="card-title text-uppercase">
+          <h5>
+            {{$comic->type}}
+          </h5>
+        </div>
         <div class="card-text">
           <p>
             {{$comic->description}}
-
           </p>
         </div>
       </div>
