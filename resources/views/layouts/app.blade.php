@@ -16,17 +16,7 @@
 </head>
 
 <body>
-    <header class="container">
-      <div class="row">
-        <div class="col-12">
-          <h1>
-            DC Comics
-    
-          </h1>
-
-        </div>
-      </div>
-    </header>
+      @include('partials.header')
     <main>
         @yield('main-content')
     </main>

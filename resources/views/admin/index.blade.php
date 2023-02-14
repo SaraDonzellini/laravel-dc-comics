@@ -12,7 +12,7 @@
                         <th scope="col">Series</th>
                         <th scope="col">Type</th>
                         <th scope="col">Price</th>
-                        <th scope="col">...</th>
+                        <th scope="col"><a href="#" class="btn btn-secondary">Create new entry</a></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -24,7 +24,7 @@
                             <td>{{ $comic->type }}</td>
                             <td>{{ $comic->price }}</td>
                             <td>
-                                <a href="{{ route('comics.show', $comic->id)}}" class="btn btn-primary">Show</a>
+                                <a href="{{ route('admin.show', $comic->id)}}" class="btn btn-primary">Show</a>
                                 <a href="#" class="btn btn-warning">Edit</a>
                                 <a href="#" class="btn btn-danger">Delete</a>
                             </td>
