@@ -19,4 +19,6 @@ Route::get('/', [PageController::class, 'home'])->name('home');
 
 
 Route::get('/admin', [ComicController::class, 'index'])->name('admin.index');
+Route::get('/admin/create', [ComicController::class, 'create'])->name('admin.create');
 Route::get('/admin/{comic}', [ComicController::class, 'show'])->name('admin.show');
+Route::post('/admin/store', [ComicController::class, 'store'])->name('admin.store');

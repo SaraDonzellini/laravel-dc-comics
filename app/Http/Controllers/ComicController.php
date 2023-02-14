@@ -16,16 +16,22 @@ class ComicController extends Controller
     public function show(Comic $comic)
     {
 
-        return view('admin/show', compact('comic'));
+        return view('admin.show', compact('comic'));
     }
 
     public function create()
     {
-        //
+        return view('admin.create');
     }
 
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        $newComic = new Comic();
+        $newComic->fill($data);
+        $newComic->save();
+
+
+        return redirect()->route('admin.show', $newComic->id);
     }
 }
