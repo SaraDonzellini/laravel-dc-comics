@@ -12,7 +12,7 @@
                         <th scope="col">Series</th>
                         <th scope="col">Type</th>
                         <th scope="col">Price</th>
-                        <th scope="col"><a href="#" class="btn btn-secondary">Create new entry</a></th>
+                        <th scope="col"><a href="{{route('admin.create')}}" class="btn btn-secondary">Create new entry</a></th>
                     </tr>
                 </thead>
                 <tbody>
