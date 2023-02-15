@@ -34,7 +34,7 @@ class ComicController extends Controller
 
         return redirect()->route('admin.show', $newComic->id);
     }
-    
+
     public function edit($id)
     {
         $comic = Comic::findOrFail($id);
@@ -46,12 +46,14 @@ class ComicController extends Controller
         $data = $request->all();
         $comic = Comic::findOrFail($id);
         $comic->update($data);
-        
+
         return redirect()->route('admin.show', $comic->id);
     }
 
-    public function destroy($id)
+    public function destroy(Comic $comic)
     {
-        //
+        $comic->delete();
+
+        return redirect()->route('admin.index');
     }
 }
