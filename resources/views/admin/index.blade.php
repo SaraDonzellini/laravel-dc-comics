@@ -3,6 +3,11 @@
 @section('main-content')
     <section class="container">
         <div class="row">
+            @if (session('message'))
+                <div class="alert alert-{{session('alert-type')}}">
+                    {{session('message')}}
+                </div>
+            @endif
             <div class="col-12">
                 <table class="table">
                     <thead>

@@ -3,6 +3,11 @@
 @section('main-content')
     <section class="container">
         <div class="row">
+            @if (session('message'))
+                <div class="alert alert-{{ session('alert-type') }}">
+                    {{ session('message') }}
+                </div>
+            @endif
             <div class="col-12">
                 <div class="card d-flex text-center">
                     <div class="card-title">
@@ -40,8 +45,8 @@
                             <button type="submit" class="btn btn-danger">Delete</button>
                         </form>
                     </div>
-                  </div>
                 </div>
+            </div>
         </div>
     </section>
 @endsection
