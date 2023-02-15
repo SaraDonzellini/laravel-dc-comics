@@ -3,44 +3,37 @@
 @section('main-content')
     <section class="container">
         <div class="row">
-            @if (session('message'))
-                <div class="alert alert-{{ session('alert-type') }}">
-                    {{ session('message') }}
-                </div>
-            @endif
             <div class="col-12">
-                <form method="POST" action="{{ route('admin.update', $comic->id) }}">
+                <form method="POST" action="{{ route('admin.comics.store') }}">
                     @csrf
-                    @method('PUT')
-
 
                     <div class="mb-3">
                         <label class="form-label">Title</label>
-                        <input type="text" class="form-control" name="title" value="{{ $comic->title }}">
+                        <input type="text" class="form-control" name="title">
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Description</label>
-                        <textarea class="form-control" rows="2" name="description">{{ $comic->description }}</textarea>
+                        <textarea class="form-control" rows="2" name="description"></textarea>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Cover</label>
-                        <input type="text" class="form-control" name="thumb" value="{{ $comic->thumb }}">
+                        <input type="text" class="form-control" name="thumb">
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Price</label>
-                        <input type="text" class="form-control" name="price" value="{{ $comic->price }}">
+                        <input type="text" class="form-control" name="price">
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Series</label>
-                        <input type="text" class="form-control" name="series" value="{{ $comic->series }}">
+                        <input type="text" class="form-control" name="series">
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Sale Date</label>
-                        <input type="text" class="form-control" name="sale_date" value="{{ $comic->sale_date }}">
+                        <input type="text" class="form-control" name="sale_date">
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Type</label>
-                        <input type="text" class="form-control" name="type" value="{{ $comic->type }}">
+                        <input type="text" class="form-control" name="type">
                     </div>
                     <button type="submit" class="btn btn-secondary">Create new entry</button>
                 </form>

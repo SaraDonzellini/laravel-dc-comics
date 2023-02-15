@@ -37,8 +37,8 @@
                         <p>
                             {{ $comic->description }}
                         </p>
-                        <a href="{{ route('admin.edit', $comic->id) }}" class="btn btn-warning">Edit</a>
-                        <form class="d-inline form-deleter" action="{{ route('admin.delete', $comic->id) }}" method="POST"
+                        <a href="{{ route('admin.comics.edit', $comic->id) }}" class="btn btn-warning">Edit</a>
+                        <form class="d-inline form-deleter" action="{{ route('admin.comics.delete', $comic->id) }}" method="POST"
                             data-element-name="{{ $comic->title }}">
                             @csrf
                             @method('DELETE')

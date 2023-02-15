@@ -16,12 +16,12 @@ class ComicController extends Controller
     public function show(Comic $comic)
     {
 
-        return view('admin.show', compact('comic'));
+        return view('admin.comics.show', compact('comic'));
     }
 
     public function create()
     {
-        return view('admin.create');
+        return view('admin.comics.create');
     }
 
     public function store(Request $request)
@@ -32,13 +32,13 @@ class ComicController extends Controller
         $newComic->save();
 
 
-        return redirect()->route('admin.show', $newComic->id)->with('message', "$newComic->title has been created")->with('alert-type', 'info');
+        return redirect()->route('admin.comics.show', $newComic->id)->with('message', "$newComic->title has been created")->with('alert-type', 'info');
     }
 
     public function edit($id)
     {
         $comic = Comic::findOrFail($id);
-        return view('admin.edit', compact('comic'));
+        return view('admin.comics.edit', compact('comic'));
     }
 
     public function update(Request $request, $id)
@@ -47,7 +47,7 @@ class ComicController extends Controller
         $comic = Comic::findOrFail($id);
         $comic->update($data);
 
-        return redirect()->route('admin.show', $comic->id)->with('message', "$comic->title has been modified")->with('alert-type', 'success');
+        return redirect()->route('admin.comics.show', $comic->id)->with('message', "$comic->title has been modified")->with('alert-type', 'success');
     }
 
     public function destroy(Comic $comic)

@@ -17,7 +17,7 @@
                             <th scope="col">Series</th>
                             <th scope="col">Type</th>
                             <th scope="col">Price</th>
-                            <th scope="col"><a href="{{ route('admin.create') }}" class="btn btn-secondary">Create new
+                            <th scope="col"><a href="{{ route('admin.comics.create') }}" class="btn btn-secondary">Create new
                                     entry</a></th>
                         </tr>
                     </thead>
@@ -30,9 +30,9 @@
                                 <td>{{ $comic->type }}</td>
                                 <td>{{ $comic->price }}</td>
                                 <td>
-                                    <a href="{{ route('admin.show', $comic->id) }}" class="btn btn-primary">Show</a>
-                                    <a href="{{ route('admin.edit', $comic->id) }}" class="btn btn-warning">Edit</a>
-                                    <form class="d-inline form-deleter" action="{{route('admin.delete', $comic->id)}}" method="POST" data-element-name="{{ $comic->title }}">
+                                    <a href="{{ route('admin.comics.show', $comic->id) }}" class="btn btn-primary">Show</a>
+                                    <a href="{{ route('admin.comics.edit', $comic->id) }}" class="btn btn-warning">Edit</a>
+                                    <form class="d-inline form-deleter" action="{{route('admin.comics.delete', $comic->id)}}" method="POST" data-element-name="{{ $comic->title }}">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger">Delete</button>
