@@ -4,7 +4,7 @@
     <section class="container">
         <div class="row">
             <div class="col-12">
-                <form method="POST" action="{{ route('admin.update') }}">
+                <form method="POST" action="{{ route('admin.update', $comic->id) }}">
                     @csrf
                     @method('PUT')
                     
