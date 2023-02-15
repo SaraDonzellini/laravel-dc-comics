@@ -27,7 +27,7 @@
                                 <td>
                                     <a href="{{ route('admin.show', $comic->id) }}" class="btn btn-primary">Show</a>
                                     <a href="{{ route('admin.edit', $comic->id) }}" class="btn btn-warning">Edit</a>
-                                    <form class="d-inline" action="{{route('admin.delete', $comic->id)}}" method="POST">
+                                    <form class="d-inline form-deleter" action="{{route('admin.delete', $comic->id)}}" method="POST" data-element-name="{{ $comic->title }}">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger">Delete</button>
@@ -46,4 +46,8 @@
             </div>
         </div>
     </section>
+@endsection
+
+@section('script')
+    @vite('resources/js/AlertFormDelete.js')
 @endsection

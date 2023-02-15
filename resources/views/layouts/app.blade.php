@@ -20,7 +20,7 @@
     <main>
         @yield('main-content')
     </main>
-
+        @yield('script')
 </body>
 
 </html>
