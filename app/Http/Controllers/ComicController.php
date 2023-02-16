@@ -26,13 +26,7 @@ class ComicController extends Controller
 
     public function store(Request $request)
     {
-        $data = $request->all();
-        $newComic = new Comic();
-        $newComic->fill($data);
-        $newComic->save();
-
-
-        $request->validate([
+        $validated = $request->validate([
             'title' => 'required|string|min:2|max:255',
             'description' => 'required|string|min:10',
             'thumb' => 'required|url|max:255',
@@ -43,23 +37,35 @@ class ComicController extends Controller
         ],
         [
             'title.required' => 'Il titolo è obbligatorio.',
-            'title.min:2' => 'Il titolo deve essere di almeno due caratteri.',
+            'title.min' => 'Il titolo deve essere di almeno due caratteri.',
+            'title.max' => 'Il titolo non deve essere più di 255 caratteri.',
             'description.required' => 'La descrizione è obbligatoria.',
-            'description.min:10' => 'La descrizione deve essere di almeno dieci caratteri.',
+            'description.min' => 'La descrizione deve essere di almeno dieci caratteri.',
             'thumb.required' => 'La cover è obbligatoria.',
             'thumb.url' => 'La cover deve essere una URL valida.',
+            'thumb.max' => 'La cover deve essere una URL valida e non deve essere più di 255 caratteri.',
             'price.required' => 'Il prezzo è obbligatorio.',
-            'price.min:3' => 'Il prezzo deve essere di almeno 3 caratteri.',
+            'price.min' => 'Il prezzo deve essere di almeno 3 caratteri.',
+            'price.max' => 'Il prezzo non deve essere più di 8 caratteri.',
             'series.required' => 'La Serie è obbligatoria.',
-            'series.min:2' => 'La Serie deve essere di almeno 2 caratteri.',
+            'series.min' => 'La Serie deve essere di almeno 2 caratteri.',
+            'series.max' => 'La Serie non deve essere più di 50 caratteri.',
             'sale_date.required' => 'La data di uscita è obbligatoria.',
-            'sale_date.min:2' => 'La data di uscita deve essere di almeno 2 caratteri.',
+            'sale_date.min' => 'La data di uscita deve essere di almeno 2 caratteri.',
+            'sale_date.max' => 'La data di uscita non deve essere più di 20 caratteri.',
             'type.required' => 'Il tipo è obbligatorio.',
-            'type.min:2' => 'Il tipo deve essere di almeno 2 caratteri.',
-        ]
+            'type.min' => 'Il tipo deve essere di almeno 2 caratteri.',
+            'type.max' => 'Il tipo non deve essere più di 30 caratteri.',
+        ],
     );
-
-
+        $data = $request->all();
+        $newComic = new Comic();
+        $newComic->fill($data);
+        $newComic->save();
+        
+        
+    
+    
         return redirect()->route('admin.comics.show', $newComic->id)->with('message', "$newComic->title has been created")->with('alert-type', 'info');
     }
 
@@ -71,11 +77,7 @@ class ComicController extends Controller
 
     public function update(Request $request, $id)
     {
-        $data = $request->all();
-        $comic = Comic::findOrFail($id);
-        $comic->update($data);
-
-        $request->validate([
+        $validated = $request->validate([
             'title' => 'required|string|min:2|max:255',
             'description' => 'required|string|min:10',
             'thumb' => 'required|url|max:255',
@@ -86,20 +88,30 @@ class ComicController extends Controller
         ],
         [
             'title.required' => 'Il titolo è obbligatorio.',
-            'title.min:2' => 'Il titolo deve essere di almeno due caratteri.',
+            'title.min' => 'Il titolo deve essere di almeno due caratteri.',
+            'title.max' => 'Il titolo non deve essere più di 255 caratteri.',
             'description.required' => 'La descrizione è obbligatoria.',
-            'description.min:10' => 'La descrizione deve essere di almeno dieci caratteri.',
+            'description.min' => 'La descrizione deve essere di almeno dieci caratteri.',
             'thumb.required' => 'La cover è obbligatoria.',
             'thumb.url' => 'La cover deve essere una URL valida.',
+            'thumb.max' => 'La cover deve essere una URL valida e non deve essere più di 255 caratteri.',
             'price.required' => 'Il prezzo è obbligatorio.',
-            'price.min:3' => 'Il prezzo deve essere di almeno 3 caratteri.',
+            'price.min' => 'Il prezzo deve essere di almeno 3 caratteri.',
+            'price.max' => 'Il prezzo non deve essere più di 8 caratteri.',
             'series.required' => 'La Serie è obbligatoria.',
-            'series.min:2' => 'La Serie deve essere di almeno 2 caratteri.',
+            'series.min' => 'La Serie deve essere di almeno 2 caratteri.',
+            'series.max' => 'La Serie non deve essere più di 50 caratteri.',
             'sale_date.required' => 'La data di uscita è obbligatoria.',
-            'sale_date.min:2' => 'La data di uscita deve essere di almeno 2 caratteri.',
+            'sale_date.min' => 'La data di uscita deve essere di almeno 2 caratteri.',
+            'sale_date.max' => 'La data di uscita non deve essere più di 20 caratteri.',
             'type.required' => 'Il tipo è obbligatorio.',
-            'type.min:2' => 'Il tipo deve essere di almeno 2 caratteri.',
+            'type.min' => 'Il tipo deve essere di almeno 2 caratteri.',
+            'type.max' => 'Il tipo non deve essere più di 30 caratteri.',
         ]);
+        $data = $request->all();
+        $comic = Comic::findOrFail($id);
+        $comic->update($data);
+
 
 
         return redirect()->route('admin.comics.show', $comic->id)->with('message', "$comic->title has been modified")->with('alert-type', 'success');
